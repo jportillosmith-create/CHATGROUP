@@ -3,10 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Chat Group</title>
+    <title>Chat Application</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Adjust to point to your actual CSS file -->
 </head>
 <body>
-    <h1>Welcome to the Chat Group!</h1>
+    <div>
+        <h2>Chat Application</h2>
+        <div id="chatbox"></div>
+        <input type="text" id="messageInput" placeholder="Type your message here..." />
+        <button id="sendButton">Send</button>
+    </div>
+    <script>
+        const chatbox = document.getElementById('chatbox');
+        const messageInput = document.getElementById('messageInput');
+        const sendButton = document.getElementById('sendButton');
+
+        // Function to handle sending messages
+        sendButton.addEventListener('click', () => {
+            const message = messageInput.value.trim();
+            if (message) {
+                // Display message
+                const messageElement = document.createElement('div');
+                messageElement.textContent = message;
+                chatbox.appendChild(messageElement);
+
+                // Store message in local storage
+                storeMessage(message);
+                messageInput.value = ''; // Clear input
+            } else {
+                alert('Please enter a valid message.');
+            }
+        });
+
+        // Function to store messages
+        function storeMessage(message) {
+            const messages = JSON.parse(localStorage.getItem('messages')) || [];
+            messages.push(message);
+            localStorage.setItem('messages', JSON.stringify(messages));
+        }
+
+        // Function to display stored messages
+        function displayMessages() {
+            const messages = JSON.parse(localStorage.getItem('messages')) || [];
+            messages.forEach(message => {
+                const messageElement = document.createElement('div');
+                messageElement.textContent = message;
+                chatbox.appendChild(messageElement);
+            });
+        }
+
+        // Initially display messages on load
+        displayMessages();
+    </script>
 </body>
 </html>
