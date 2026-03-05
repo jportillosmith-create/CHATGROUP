@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Formulario de Chat">
+    <title>Chat - Sprint</title>
+</head>
+<body>
+    <div class="chat-container">
+        <header class="chat-header">
+            <h1>Chat</h1>
+            <p>Conectado</p>
+        </header>
+
+        <main class="messages-area" id="messagesArea">
+            <p>Inicia una conversación</p>
+        </main>
+
+        <footer class="input-area">
+            <form class="input-form" id="chatForm" novalidate>
+                <div class="input-wrapper">
+                    <input 
+                        type="text" 
+                        id="messageInput" 
+                        placeholder="Escribe un mensaje..." 
+                        maxlength="500"
+                        required
+                        aria-label="Campo de mensaje del chat"
+                    >
+                </div>
+                <button 
+                    type="submit" 
+                    class="send-btn" 
+                    id="sendBtn"
+                    aria-label="Enviar mensaje"
+                >
+                    Enviar
+                </button>
+            </form>
+        </footer>
+    </div>
+</body>
+</html>
